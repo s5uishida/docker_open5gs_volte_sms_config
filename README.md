@@ -19,12 +19,6 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
 <h2 id="overview">Overview of Network Configuration</h2>
 
 This describes the following setting example.
-
-| Facility | IP address |
-| --- | --- |
-| eNodeB | 192.168.0.10/24 |
-| Docker host | 192.168.0.20/24 |
-
 ```
      eNodeB                Docker host - 172.22.0.0/24
     ---------             -------------
