@@ -1,0 +1,1 @@
+# docker_open5gs_volte_sms_config
