@@ -95,6 +95,7 @@ mme:
         mcc: MCC
         mnc: MNC
 -->   tac: 1
+...
 ```
 
 <h3 id="build">Build docker image for Open5GS and Kamailio</h3>
