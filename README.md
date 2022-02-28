@@ -38,7 +38,7 @@ If eNodeB does not have a static routing setting function, build a network so th
 <h2 id="branch_master">Use the master branch of docker_open5gs</h2>
 
 In this branch you can try **VoLTE** and **SMS over IMS** / **SMS over SGs**.   
-Note. For **SMS over SGs** of docker_open5gs, 2G/3G radio access is not used at all rather it uses only the core network (MSC + SMSC + HLR).
+**Note.** For **SMS over SGs** of docker_open5gs, 2G/3G radio access is not used at all rather it uses only the core network (MSC + SMSC + HLR).
 ```
 # git clone https://github.com/herlesupreeth/docker_open5gs
 # cd docker_open5gs
@@ -187,7 +187,9 @@ Then, for each IMPU, you need to select `smsc_sp` for Service profile rather tha
 
 <h3 id="try">Try VoLTE and SMS</h3>
 
-Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device does not support **SMS over IMS**, you can send SMS with **SMS over SGs** depending on your device. 
+Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device does not support **SMS over IMS**, you can send SMS with **SMS over SGs** depending on your device.
+
+**Note. Kamailio seems to have a bug in handling multibyte messages, which causes garbled characters in SMS.**
 
 <h2 id="branch_open5gs">Use the open5gs_hss_cx branch of docker_open5gs</h2>
 
