@@ -124,21 +124,15 @@ For example, I prepare terminals for each of the following NF groups and execute
 ```
 # set -a
 # source .env
-# docker-compose up nrf hss mme pcrf sgwc sgwu smf upf
+# docker-compose up osmohlr osmomsc nrf hss mme pcrf sgwc sgwu smf upf
 ```
 *terminal#3*
 ```
 # set -a
 # source .env
-# docker-compose up osmohlr osmomsc
-```
-*terminal#4*
-```
-# set -a
-# source .env
 # docker-compose up rtpengine fhoss
 ```
-*terminal#5*
+*terminal#4*
 ```
 # set -a
 # source .env
