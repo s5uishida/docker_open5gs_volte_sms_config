@@ -213,7 +213,7 @@ OsmoMSC# subscriber msisdn 1001 sms sender msisdn 1002 send TEST MESSAGE
 ```
 - Command line to send SMS from MSISDN=1000 to MSISDN=1002 for which there is no corresponding SIM
 ```
-OsmoMSC# subscriber msisdn 1001 sms sender msisdn 1000 send TEST MESSAGE
+OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1000 send TEST MESSAGE
 ```
 
 <h2 id="branch_open5gs">Use the open5gs_hss_cx branch of docker_open5gs</h2>
