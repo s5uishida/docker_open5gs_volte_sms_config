@@ -13,7 +13,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
   - [Register the IMSI and MSISDN with OsmoHLR](#register_osmocom)
   - [Register IMS subscription with FHoSS](#register_fhoss)
   - [Try VoLTE and SMS](#try)
-    - [Send SMS from osmomsc VTY terminal (SMS over SGs)](#osmomsc_send_command)
+    - [Send SMS from OsmoMSC VTY terminal (SMS over SGs)](#osmomsc_send_command)
 - [Use the open5gs_hss_cx branch of docker_open5gs](#branch_open5gs)
 ---
 
