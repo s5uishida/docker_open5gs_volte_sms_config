@@ -13,6 +13,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
   - [Register the IMSI and MSISDN with OsmoHLR](#register_osmocom)
   - [Register IMS subscription with FHoSS](#register_fhoss)
   - [Try VoLTE and SMS](#try)
+    - [Send SMS from osmomsc VTY terminal (SMS over SGs)](#osmomsc_send_command)
 - [Use the open5gs_hss_cx branch of docker_open5gs](#branch_open5gs)
 ---
 
@@ -190,6 +191,30 @@ Then, for each IMPU, you need to select `smsc_sp` for Service profile rather tha
 Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device does not support **SMS over IMS**, you can send SMS with **SMS over SGs** depending on your device.
 
 **Note. Kamailio seems to have a bug in handling multibyte messages, which causes garbled characters in SMS.**
+
+<h4 id="osmomsc_send_command">Send SMS from osmomsc VTY terminal (SMS over SGs)</h4>
+
+You can send SMS to the destination terminal by command operation on the `osmomsc` VTY terminal (SMS over SGs).
+Please login to the `osmomsc` container and send SMS from the command line as following.
+
+`11.3.3 The list command`  
+https://ftp.osmocom.org/docs/latest/osmomsc-usermanual.pdf
+
+**For example, if the following IMSI and MSISDN are registered in osmohlr)**
+| IMSI | MSISDN | SIM |
+| --- | --- | --- |
+| 001010000001000 | 1000 | x |
+| 001010000001001 | 1001 | o |
+| 001010000001002 | 1002 | o |
+
+- Command line to send SMS from MSISDN=1001 to MSISDN=1002 where the corresponding SIM exists
+```
+OsmoMSC# subscriber msisdn 1001 sms sender msisdn 1002 send TEST MESSAGE
+```
+- Command line to send SMS from MSISDN=1000 to MSISDN=1002 for which there is no corresponding SIM
+```
+OsmoMSC# subscriber msisdn 1001 sms sender msisdn 1000 send TEST MESSAGE
+```
 
 <h2 id="branch_open5gs">Use the open5gs_hss_cx branch of docker_open5gs</h2>
 
