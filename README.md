@@ -200,7 +200,7 @@ Please login to the `osmomsc` container and send SMS from the command line as fo
 `11.3.3 The list command`  
 https://ftp.osmocom.org/docs/latest/osmomsc-usermanual.pdf
 
-**For example, if the following IMSI and MSISDN are registered in osmohlr)**
+**For example, if the following IMSI and MSISDN are registered in OsmoHLR)**
 | IMSI | MSISDN | SIM |
 | --- | --- | --- |
 | 001010000001000 | 1000 | x |
