@@ -192,9 +192,9 @@ Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device d
 
 **Note. Kamailio seems to have a bug in handling multibyte messages, which causes garbled characters in SMS.**
 
-<h4 id="osmomsc_send_command">Send SMS from osmomsc VTY terminal (SMS over SGs)</h4>
+<h4 id="osmomsc_send_command">Send SMS from OsmoMSC VTY terminal (SMS over SGs)</h4>
 
-You can send SMS to the destination terminal by command operation on the `osmomsc` VTY terminal (SMS over SGs).
+You can send SMS to the destination terminal by command operation on the OsmoMSC VTY terminal (SMS over SGs).
 Please login to the `osmomsc` container and send SMS from the command line as following.
 
 `11.3.3 The list command`  
