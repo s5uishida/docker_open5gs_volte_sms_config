@@ -218,7 +218,8 @@ OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1000 send TEST MESSAGE
 
 <h2 id="branch_open5gs">Use the open5gs_hss_cx branch of docker_open5gs</h2>
 
-In this branch, Kamailio's S-CSCF and I-CSCF can communicate with Open5GS HSS(Cx) instead of FHoSS. However, since Open5GS HSS(Cx) has no settings related to the SMSC application server, S-CSCF does not have the information to forward SIP messages to SMSC(IMS), and so **SMS over IMS** cannot be used. In this case, if your device supports CSFB, send SMS with **SMS over SGs**.
+In this branch you can try **VoLTE** and **SMS over SGs**.
+Kamailio's S-CSCF and I-CSCF can communicate with Open5GS HSS(Cx) instead of FHoSS. However, since Open5GS HSS(Cx) has no settings related to the SMSC application server, S-CSCF does not have the information to forward SIP messages to SMSC(IMS), and so **SMS over IMS** cannot be used. In this case, if your device supports CSFB, send SMS with **SMS over SGs**.
 ```
 # git clone https://github.com/herlesupreeth/docker_open5gs
 # cd docker_open5gs
