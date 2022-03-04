@@ -209,7 +209,7 @@ https://ftp.osmocom.org/docs/latest/osmomsc-usermanual.pdf
 
 - Command line to send SMS from MSISDN=1001 to MSISDN=1002 where the corresponding SIM exists
 ```
-OsmoMSC# subscriber msisdn 1001 sms sender msisdn 1002 send TEST MESSAGE
+OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1001 send TEST MESSAGE
 ```
 - Command line to send SMS from MSISDN=1000 to MSISDN=1002 for which there is no corresponding SIM
 ```
