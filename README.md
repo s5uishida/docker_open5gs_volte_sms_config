@@ -165,7 +165,7 @@ https://open5gs.org/open5gs/docs/tutorial/02-VoLTE-setup/
 Please login to the `osmohlr` container and register by referring to the following.
 
 `6.1 Example: Add/Update/Delete Subscriber via VTY`  
-https://ftp.osmocom.org/docs/latest/osmohlr-usermanual.pdf
+https://downloads.osmocom.org/docs/latest/osmohlr-usermanual.pdf
 
 This setting is required to function as **SMS over SGs**.
 
@@ -199,7 +199,7 @@ Please login to the `osmomsc` container and send SMS from the command line as fo
 
 `14 Configuring the Core Network`  
 `11.3.3 The list command`  
-https://ftp.osmocom.org/docs/latest/osmomsc-usermanual.pdf
+https://downloads.osmocom.org/docs/latest/osmomsc-usermanual.pdf
 
 **For example, if the following IMSI and MSISDN are registered in OsmoHLR)**
 | IMSI | MSISDN | SIM |
