@@ -197,6 +197,7 @@ Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device d
 You can send SMS to the destination terminal by command operation on the OsmoMSC VTY terminal (SMS over SGs).
 Please login to the `osmomsc` container and send SMS from the command line as following.
 
+`14 Configuring the Core Network`  
 `11.3.3 The list command`  
 https://ftp.osmocom.org/docs/latest/osmomsc-usermanual.pdf
 
