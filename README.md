@@ -30,6 +30,11 @@ This describes the following setting example.
 -------------------------------------------------------
        .10                     .20      192.168.0.0/24
 ```
+For reference, the Docker host VM on VirtualBox I have tried is as follows:
+| CPUs | Memory | SSD | OS |
+| --- | --- | --- | --- |
+| 2 | 4GB | 40GB | Ubuntu 20.04 |
+
 For eNodeB, set static routing to eNodeB for packets going from eNodeB to the Docker host network (`172.22.0.0/24`).
 ```
 # ip route add 172.22.0.0/24 via 192.168.0.20
