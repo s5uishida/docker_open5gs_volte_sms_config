@@ -31,7 +31,7 @@ This describes the following setting example.
        .10                     .20      192.168.0.0/24
 ```
 For reference, the Docker host VM on VirtualBox I have tried is as follows:
-| CPUs | Memory | SSD | OS |
+| CPU Cores | Memory | SSD | OS |
 | --- | --- | --- | --- |
 | 2 | 4GB | 40GB | Ubuntu 20.04 |
 
