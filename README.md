@@ -172,6 +172,39 @@ Please login to the `osmohlr` container and register by referring to the followi
 `6.1 Example: Add/Update/Delete Subscriber via VTY`  
 https://downloads.osmocom.org/docs/latest/osmohlr-usermanual.pdf
 
+The following is an example of registering subscriber information for IMSI=001010000001001 and MSISDN=1001.
+
+First, login to the `osmohlr` container.
+```
+# docker exec -it osmohlr /bin/bash
+```
+Then telnet to localhost.
+```
+# telnet localhost 4258
+...
+OsmoHLR> enable
+OsmoHLR#
+```
+Next, register the subscriber information for IMSI=001010000001001 and MSISDN=1001.
+```
+OsmoHLR# subscriber imsi 001010000001001 create
+% Created subscriber 001010000001001
+    ID: 1
+    IMSI: 001010000001001
+    MSISDN: none
+OsmoHLR# subscriber imsi 001010000001001 update msisdn 1001
+% Updated subscriber IMSI='001010000001001' to MSISDN='1001'
+OsmoHLR#
+```
+Make sure this subscriber information is registered.
+```
+OsmoHLR# show subscribers all
+ID     MSISDN        IMSI              IMEI              NAM
+-----  ------------  ----------------  ----------------  -----
+1      1001          001010000001001    -------------    CSPS  
+ Subscribers Shown: 1
+OsmoHLR#
+```
 This setting is required to function as **SMS over SGs**.
 
 <h3 id="register_fhoss">Register IMS subscription with FHoSS</h3>
@@ -213,6 +246,18 @@ https://downloads.osmocom.org/docs/latest/osmomsc-usermanual.pdf
 | 001010000001000 | 1000 | x |
 | 001010000001001 | 1001 | o |
 | 001010000001002 | 1002 | o |
+
+First, login to the `osmomsc` container.
+```
+# docker exec -it osmomsc /bin/bash
+```
+Then telnet to localhost.
+```
+# telnet localhost 4254
+...
+OsmoMSC> enable
+OsmoMSC#
+```
 
 - Command line to send SMS from MSISDN=1001 to MSISDN=1002 where the corresponding SIM exists
 ```
