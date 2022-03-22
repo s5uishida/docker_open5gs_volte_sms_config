@@ -153,7 +153,7 @@ For example, I prepare terminals for each of the following NF groups and execute
 
 <h3 id="register_open5gs">Register subscribers information with Open5GS</h3>
 
-Please also register MSISDN. At that time, set the APN setting information as follows.
+**Please also register MSISDN.** At that time, set the APN setting information as follows.
 | APN | Type | QCI | ARP | Capability | Vulnerablility | MBR DL/UL(Kbps) | GBR DL/UL(Kbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | internet | IPv4 | 9 | 8 | Disabled | Disabled | unlimited/unlimited | |
