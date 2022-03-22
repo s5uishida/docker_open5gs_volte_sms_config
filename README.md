@@ -228,7 +228,7 @@ Then, for each IMPU, you need to select `smsc_sp` for Service profile rather tha
 
 Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device does not support **SMS over IMS**, you can send SMS with **SMS over SGs** depending on your device.
 
-**Note. Kamailio's SMS (SMS over IMS) seems to have a bug in handling multibyte messages, which causes garbled characters in SMS.
+**Note. Kamailio's SMS (SMS over IMS) doesn't seem to handle multibyte messages properly, which causes garbled characters in SMS.
 On the other hand, OsmoMSC (SMS over SGs) seems to handle multibyte messages properly without garbled characters.**
 
 <h4 id="osmomsc_send_command">Send SMS from OsmoMSC VTY terminal (SMS over SGs)</h4>
