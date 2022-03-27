@@ -106,6 +106,10 @@ mme:
 
 <h3 id="build">Build docker image for Open5GS and Kamailio</h3>
 
+Please install the following first.
+- [docker-ce](https://docs.docker.com/install/linux/docker-ce/ubuntu)
+- [docker-compose](https://docs.docker.com/compose)
+
 See [docker_open5gs](https://github.com/herlesupreeth/docker_open5gs) for build instructions.
 ```
 # cd docker_open5gs/base
@@ -165,6 +169,13 @@ See below for details.
 `18. Install Open5GS in the same machine as Kamailio IMS - Install Open5GS from source`  
 https://open5gs.org/open5gs/docs/tutorial/02-VoLTE-setup/
 
+```
+http://192.168.0.20:3000/
+
+user: admin
+password: 1423
+```
+
 <h3 id="register_osmocom">Register the IMSI and MSISDN with OsmoHLR</h3>
 
 Please login to the `osmohlr` container and register by referring to the following.
@@ -216,11 +227,10 @@ https://open5gs.org/open5gs/docs/tutorial/02-VoLTE-setup/
 
 ```
 http://192.168.0.20:8080/hss.web.console/
+
+user: hssAdmin
+password: hss
 ```
-| Item | Value |
-| --- | --- |
-| user | hssAdmin |
-| password | hss |
 
 Then, for each IMPU, you need to select `smsc_sp` for Service profile rather than `default_sp`.
 
