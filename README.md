@@ -41,6 +41,12 @@ For eNodeB, set static routing to eNodeB for packets going from eNodeB to the Do
 ```
 If eNodeB does not have a static routing setting function, build a network so that the Docker host becomes the default GW.
 
+The PDNs are as follows.
+| PDN | TUNnel interface of PDN | APN | U-Plane # |
+| --- | --- | --- | --- |
+| 192.168.100.0/24 | ogstun | internet | U-Plane1 |
+| 192.168.101.0/24 | ogstun2 | ims | U-Plane1 |
+
 <h2 id="branch_master">Use the master branch of docker_open5gs</h2>
 
 In this branch you can try **VoLTE** and **SMS over IMS** / **SMS over SGs**.   
