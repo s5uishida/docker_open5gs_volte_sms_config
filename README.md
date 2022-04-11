@@ -15,6 +15,8 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
   - [Try VoLTE and SMS](#try)
     - [Send SMS from OsmoMSC VTY terminal (SMS over SGs)](#osmomsc_send_command)
 - [Use the open5gs_hss_cx branch of docker_open5gs](#branch_open5gs)
+  - [Additional changes in configuration files of docker_open5gs](#change_config_2)
+- [Changelog (summary)](#changelog)
 ---
 
 <h2 id="overview">Overview of Network Configuration</h2>
@@ -286,8 +288,8 @@ OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1000 send TEST MESSAGE
 
 <h2 id="branch_open5gs">Use the open5gs_hss_cx branch of docker_open5gs</h2>
 
-In this branch you can try **VoLTE** and **SMS over SGs**.
-Kamailio's S-CSCF and I-CSCF can communicate with Open5GS HSS(Cx) instead of FHoSS. However, since Open5GS HSS(Cx) has no settings related to the SMSC application server, S-CSCF does not have the information to forward SIP messages to SMSC(IMS), and so **SMS over IMS** cannot be used. In this case, if your device supports CSFB, send SMS with **SMS over SGs** using OsmoHLR and OsmoMSC.
+In this branch you can try **VoLTE** and **SMS over IMS** / **SMS over SGs**.
+Kamailio's S-CSCF and I-CSCF can communicate with Open5GS HSS(Cx) instead of FHoSS.
 ```
 # git clone https://github.com/herlesupreeth/docker_open5gs
 # cd docker_open5gs
@@ -295,6 +297,40 @@ Kamailio's S-CSCF and I-CSCF can communicate with Open5GS HSS(Cx) instead of FHo
 ...
 ```
 
+<h3 id="change_config_2">Additional changes in configuration files of docker_open5gs</h3>
+
+**hss/hss.yaml)**
+
+```
+--- hss.yaml.orig       2022-04-10 23:57:21.211525691 +0000
++++ hss.yaml    2022-04-11 00:09:30.363635545 +0000
+@@ -7,3 +7,4 @@
+ 
+ hss:
+     freeDiameter: /open5gs/install/etc/freeDiameter/hss.conf
++    sms_over_ims: "sip:smsc.IMS_DOMAIN:7060;transport=tcp"
+```
+
+**hss/hss_init.sh)**
+
+```
+--- hss_init.sh.orig    2022-04-10 23:57:46.582060318 +0000
++++ hss_init.sh 2022-04-11 00:10:16.458646987 +0000
+@@ -45,6 +45,7 @@
+ sed -i 's|IMS_DOMAIN|'$IMS_DOMAIN'|g' install/etc/freeDiameter/hss.conf
+ sed -i 's|EPC_DOMAIN|'$EPC_DOMAIN'|g' install/etc/freeDiameter/make_certs.sh
+ sed -i 's|MONGO_IP|'$MONGO_IP'|g' install/etc/open5gs/hss.yaml
++sed -i 's|IMS_DOMAIN|'$IMS_DOMAIN'|g' install/etc/open5gs/hss.yaml
+ 
+ # Generate TLS certificates
+ ./install/etc/freeDiameter/make_certs.sh install/etc/freeDiameter
+```
+
 ---
 
 [docker_open5gs](https://github.com/herlesupreeth/docker_open5gs) is a excellent software to try **VoLTE** and **SMS** easily. I would like to thank all the software developers and contributors related.
+
+<h2 id="changelog">Changelog (summary)</h2>
+
+- [2022.04.11] Open5GS HSS Cx interface now supports the settings related to SMSC application server.
+- [2022.02.27] Initial release.
