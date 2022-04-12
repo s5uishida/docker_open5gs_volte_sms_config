@@ -112,6 +112,37 @@ mme:
 ...
 ```
 
+**smf/smf.yaml)**
+
+Remove the binding on SBI and the connection settings to NRF.
+```diff
+--- smf.yaml.orig       2022-04-10 17:04:39.204720997 +0900
++++ smf.yaml    2022-04-10 17:56:26.059068217 +0900
+@@ -6,9 +6,6 @@
+ 
+ smf:
+     freeDiameter: /open5gs/install/etc/freeDiameter/smf.conf
+-    sbi:
+-      - addr: SMF_IP
+-        port: 7777
+     gtpc:
+       - addr: SMF_IP
+     gtpu:
+@@ -37,12 +34,6 @@
+       - PCSCF_IP
+     mtu: 1400
+ 
+-nrf:
+-    sbi:
+-      - addr:
+-          - NRF_IP
+-        port: 7777
+-
+ upf:
+     pfcp:
+       - addr: UPF_IP
+```
+
 <h3 id="build">Build docker image for Open5GS and Kamailio</h3>
 
 Please install the following first.
@@ -148,7 +179,7 @@ For example, I prepare terminals for each of the following NF groups and execute
 ```
 # set -a
 # source .env
-# docker-compose up nrf hss mme pcrf sgwc sgwu smf upf
+# docker-compose up hss mme pcrf sgwc sgwu smf upf
 ```
 *terminal#4*
 ```
