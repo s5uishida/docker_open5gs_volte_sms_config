@@ -71,22 +71,54 @@ In this branch you can try **VoLTE** and **SMS over IMS** / **SMS over SGs**.
 
 **docker-compose.yaml)**
 
-Publish the ports of each of the following NFs.
-```
-  sgwu:
-...
+Publish the following ports of SGW-U and MME. And also remove the connection settings and dependencies to NRF.
+```diff
+--- docker-compose.yaml.orig    2022-04-17 18:07:39.284997931 +0900
++++ docker-compose.yaml 2022-04-17 18:12:17.180971511 +0900
+@@ -235,15 +235,13 @@
+     expose:
+       - "8805/udp"
+       - "2152/udp"
 -    # ports:
 -    #   - "2152:2152/udp"
 +    ports:
 +      - "2152:2152/udp"
-...
-  mme:
-...
+     networks:
+       default:
+         ipv4_address: ${SGWU_IP}
+   smf:
+     image: docker_open5gs
+-    depends_on:
+-      - nrf
+     container_name: smf
+     env_file:
+       - .env
+@@ -263,14 +261,12 @@
+       - "5868/sctp"
+       - "8805/udp"
+       - "2123/udp"
+-      - "7777/tcp"
+     networks:
+       default:
+         ipv4_address: ${SMF_IP}
+   upf:
+     image: docker_open5gs
+     depends_on:
+-      - nrf
+       - smf
+     container_name: upf
+     env_file:
+@@ -353,8 +349,8 @@
+       - "5868/sctp"
+       - "36412/sctp"
+       - "2123/udp"
 -    # ports:
 -    #   - "36412:36412/sctp"
 +    ports:
 +      - "36412:36412/sctp"
-...
+     networks:
+       default:
+         ipv4_address: ${MME_IP}
 ```
 
 **mme/mme.yaml)**
