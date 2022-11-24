@@ -239,6 +239,12 @@ For example, I prepare terminals for each of the following NF groups and execute
 # source .env
 # docker-compose up smsc icscf scscf pcscf
 ```
+*terminal#6*
+```
+# set -a
+# source .env
+# docker-compose up metrics
+```
 
 <h3 id="register_open5gs">Register subscribers information with Open5GS</h3>
 
