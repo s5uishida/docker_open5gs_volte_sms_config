@@ -84,9 +84,9 @@ In this branch you can try **VoLTE** and **SMS over IMS** / **SMS over SGs**.
 
 Publish the following ports of SGW-U and MME. And also remove the connection settings and dependencies to NRF.
 ```diff
---- docker-compose.yaml.orig    2022-04-17 18:07:39.284997931 +0900
-+++ docker-compose.yaml 2022-04-17 18:12:17.180971511 +0900
-@@ -235,15 +235,13 @@
+--- docker-compose.yaml.orig    2022-11-24 13:08:54.241241214 +0900
++++ docker-compose.yaml 2022-11-24 13:11:09.745798200 +0900
+@@ -258,16 +258,13 @@
      expose:
        - "8805/udp"
        - "2152/udp"
@@ -101,28 +101,31 @@ Publish the following ports of SGW-U and MME. And also remove the connection set
      image: docker_open5gs
 -    depends_on:
 -      - nrf
+-      - scp
      container_name: smf
      env_file:
        - .env
-@@ -263,14 +261,12 @@
+@@ -287,7 +284,6 @@
        - "5868/sctp"
        - "8805/udp"
        - "2123/udp"
 -      - "7777/tcp"
+       - "9091/tcp"
      networks:
        default:
-         ipv4_address: ${SMF_IP}
+@@ -295,8 +291,6 @@
    upf:
      image: docker_open5gs
      depends_on:
 -      - nrf
+-      - scp
        - smf
      container_name: upf
      env_file:
-@@ -353,8 +349,8 @@
-       - "5868/sctp"
+@@ -382,8 +376,8 @@
        - "36412/sctp"
        - "2123/udp"
+       - "9091/tcp"
 -    # ports:
 -    #   - "36412:36412/sctp"
 +    ports:
@@ -159,8 +162,8 @@ mme:
 
 Remove the binding on SBI and the connection settings to NRF.
 ```diff
---- smf.yaml.orig       2022-04-10 17:04:39.204720997 +0900
-+++ smf.yaml    2022-04-10 17:56:26.059068217 +0900
+--- smf.yaml.orig       2022-11-24 13:08:34.409159793 +0900
++++ smf.yaml    2022-11-24 13:13:03.458266393 +0900
 @@ -6,9 +6,6 @@
  
  smf:
@@ -171,14 +174,14 @@ Remove the binding on SBI and the connection settings to NRF.
      gtpc:
        - addr: SMF_IP
      gtpu:
-@@ -37,12 +34,6 @@
-       - PCSCF_IP
-     mtu: 1400
+@@ -40,12 +37,6 @@
+       - addr: SMF_IP
+         port: 9091
  
--nrf:
+-scp:
 -    sbi:
 -      - addr:
--          - NRF_IP
+-          - SCP_IP
 -        port: 7777
 -
  upf:
