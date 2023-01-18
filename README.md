@@ -160,7 +160,7 @@ mme:
 
 **smf/smf.yaml)**
 
-Remove the binding on SBI and the connection settings to NRF.
+Remove the binding on SBI and the connection settings to SCP.
 ```diff
 --- smf.yaml.orig       2022-11-24 13:08:34.409159793 +0900
 +++ smf.yaml    2022-11-24 13:13:03.458266393 +0900
