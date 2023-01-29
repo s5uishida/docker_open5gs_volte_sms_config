@@ -12,6 +12,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
 5. [SCP Indirect communication Model C](https://github.com/s5uishida/open5gs_5gc_ueransim_scp_model_c_sample_config)
 6. VoLTE and SMS Configuration for docker_open5gs (this article)
 7. [Monitoring Metrics with Prometheus](https://github.com/s5uishida/open5gs_5gc_ueransim_metrics_sample_config)
+8. [Framed Routing](https://github.com/s5uishida/open5gs_5gc_ueransim_framed_routing_sample_config)
 
 ---
 <h2 id="toc">Table of Contents</h2>
