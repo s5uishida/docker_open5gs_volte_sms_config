@@ -198,7 +198,6 @@ Remove the binding on SBI and the connection settings to SCP.
 
 Please install the following first.
 - [docker-ce](https://docs.docker.com/install/linux/docker-ce/ubuntu)
-- [docker-compose](https://docs.docker.com/compose)
 
 See [docker_open5gs](https://github.com/herlesupreeth/docker_open5gs) for build instructions.
 ```
@@ -218,31 +217,31 @@ For example, I prepare terminals for each of the following NF groups and execute
 ```
 # set -a
 # source .env
-# docker-compose up mongo mysql dns webui
+# docker compose up mongo mysql dns webui
 ```
 *terminal#2*
 ```
 # set -a
 # source .env
-# docker-compose up osmohlr osmomsc
+# docker compose up osmohlr osmomsc
 ```
 *terminal#3*
 ```
 # set -a
 # source .env
-# docker-compose up hss mme pcrf sgwc sgwu smf upf
+# docker compose up hss mme pcrf sgwc sgwu smf upf
 ```
 *terminal#4*
 ```
 # set -a
 # source .env
-# docker-compose up rtpengine fhoss
+# docker compose up rtpengine fhoss
 ```
 *terminal#5*
 ```
 # set -a
 # source .env
-# docker-compose up smsc icscf scscf pcscf
+# docker compose up smsc icscf scscf pcscf
 ```
 
 <h3 id="register_open5gs">Register subscribers information with Open5GS</h3>
