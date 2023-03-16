@@ -167,9 +167,9 @@ mme:
 
 Remove the binding on SBI and the connection settings to SCP.
 ```diff
---- smf.yaml.orig       2022-11-24 13:08:34.409159793 +0900
-+++ smf.yaml    2022-11-24 13:13:03.458266393 +0900
-@@ -6,9 +6,6 @@
+--- smf.yaml.orig       2023-03-15 19:44:48.000000000 +0900
++++ smf.yaml    2023-03-16 09:05:06.000000000 +0900
+@@ -12,9 +12,6 @@
  
  smf:
      freeDiameter: /open5gs/install/etc/freeDiameter/smf.conf
@@ -179,7 +179,7 @@ Remove the binding on SBI and the connection settings to SCP.
      gtpc:
        - addr: SMF_IP
      gtpu:
-@@ -40,12 +37,6 @@
+@@ -46,18 +43,6 @@
        - addr: SMF_IP
          port: 9091
  
@@ -187,6 +187,12 @@ Remove the binding on SBI and the connection settings to SCP.
 -    sbi:
 -      - addr:
 -          - SCP_IP
+-        port: 7777
+-
+-nrf:
+-    sbi:
+-      - addr:
+-          - NRF_IP
 -        port: 7777
 -
  upf:
