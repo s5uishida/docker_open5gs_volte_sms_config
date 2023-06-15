@@ -15,6 +15,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
 8. VoLTE and SMS Configuration for docker_open5gs (this article)
 9. [Monitoring Metrics with Prometheus](https://github.com/s5uishida/open5gs_5gc_ueransim_metrics_sample_config)
 10. [Framed Routing](https://github.com/s5uishida/open5gs_5gc_ueransim_framed_routing_sample_config)
+11. [VPP-UPF with DPDK](https://github.com/s5uishida/open5gs_5gc_ueransim_vpp_upf_dpdk_sample_config)
 ---
 
 <h2 id="misc">Miscellaneous Notes</h2>
