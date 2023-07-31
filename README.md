@@ -22,6 +22,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
 <h2 id="misc">Miscellaneous Notes</h2>
 
 - [Install MongoDB 6.0 and Open5GS WebUI](https://github.com/s5uishida/open5gs_install_mongodb6_webui)
+- [Install MongoDB 4.4.18 on Ubuntu 20.04 for Raspberry Pi 4B](https://github.com/s5uishida/install_mongodb_on_ubuntu_for_rp4b)
 - [A Note for Changing Network Interface of UPF from TUN to TAP in Open5GS](https://github.com/s5uishida/change_from_tun_to_tap_in_open5gs)
 ---
 <h2 id="toc">Table of Contents</h2>
