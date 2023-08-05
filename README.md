@@ -437,7 +437,7 @@ Then, for `docker-compose.yaml`, in addition to [this change](https://github.com
 -  mongodbdata: {}
    dbdata: {}
 ```
-After this, the build and configuration are the same as above.
+After this, the configuration and build are the same as above.
 I haven't confirmed the operation, but it is probably able to use VoLTE/SMS with Raspberry Pi 4B.
 
 ---
