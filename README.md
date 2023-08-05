@@ -409,7 +409,7 @@ Copy the `mongo_for_rp4` directory from this repository as the `mongo` directory
 # cp -pr docker_open5gs_volte_sms_config/mongo_for_rp4 docker_open5gs/mongo
 ```
 Then, for `docker-compose.yaml`, in addition to [this change](https://github.com/s5uishida/docker_open5gs_volte_sms_config#changes-in-configuration-files-of-docker_open5gs), change as follows.
-```
+```diff
 --- docker-compose.yaml.orig    2023-08-05 08:37:04.796354539 +0000
 +++ docker-compose.yaml 2023-08-05 12:14:37.128435471 +0000
 @@ -1,13 +1,14 @@
