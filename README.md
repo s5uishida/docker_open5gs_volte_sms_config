@@ -38,7 +38,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
   - [Try VoLTE and SMS](#try)
     - [Send SMS from OsmoMSC VTY terminal (SMS over SGs)](#osmomsc_send_command)
 - [Use open5gs_hss_cx branch of docker_open5gs](#branch_open5gs)
-- [Use VoLTE/SMS with Raspberry Pi 4B](#rp4)
+- [Use VoLTE and SMS with Raspberry Pi 4B](#rp4)
   - [Change how to create the docker image and container of MongoDB](#rp4_mongodb)
 - [Changelog (summary)](#changelog)
 ---
@@ -392,9 +392,9 @@ Kamailio's S-CSCF and I-CSCF can communicate with Open5GS HSS(Cx) instead of FHo
 ...
 ```
 
-<h2 id="rp4">Use VoLTE/SMS with Raspberry Pi 4B</h2>
+<h2 id="rp4">Use VoLTE and SMS with Raspberry Pi 4B</h2>
 
-If you try VoLTE/SMS with Raspberry Pi 4B, it is convenient to use `open5gs_hss_cx` branch.
+If you try VoLTE and SMS with Raspberry Pi 4B, it is convenient to use `open5gs_hss_cx` branch.
 On this case, as shown [here](https://github.com/s5uishida/install_mongodb_on_ubuntu_for_rp4b), there is a limit to the version of MongoDB that can be installed on the Raspberry Pi 4B.
 So make the necessary changes on docker_open5gs for this.
 
@@ -438,7 +438,7 @@ Then, for `docker-compose.yaml`, in addition to [this change](https://github.com
    dbdata: {}
 ```
 After this, the configuration and build are the same as above.
-I haven't confirmed the operation, but it is probably able to use VoLTE/SMS with Raspberry Pi 4B.
+I haven't confirmed the operation, but it is probably able to use VoLTE and SMS with Raspberry Pi 4B.
 
 ---
 
@@ -446,6 +446,6 @@ I haven't confirmed the operation, but it is probably able to use VoLTE/SMS with
 
 <h2 id="changelog">Changelog (summary)</h2>
 
-- [2023.08.05] Added the settings to use VoLTE/SMS with Raspberry Pi 4B. However, there is no confirmation of operation.
+- [2023.08.05] Added the settings to use VoLTE and SMS with Raspberry Pi 4B. However, there is no confirmation of operation.
 - [2022.04.11] Open5GS HSS Cx interface now supports the settings related to SMSC application server.
 - [2022.02.27] Initial release.
