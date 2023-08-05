@@ -28,7 +28,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
 <h2 id="toc">Table of Contents</h2>
 
 - [Overview of Network Configuration](#overview)
-- [Use the master branch of docker_open5gs](#branch_master)
+- [Use master branch of docker_open5gs](#branch_master)
   - [Changes in configuration files of docker_open5gs](#change_config)
   - [Build docker image for Open5GS and Kamailio](#build)
   - [Run docker-compose](#run)
@@ -37,7 +37,9 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
   - [Register IMS subscription with FHoSS](#register_fhoss)
   - [Try VoLTE and SMS](#try)
     - [Send SMS from OsmoMSC VTY terminal (SMS over SGs)](#osmomsc_send_command)
-- [Use the open5gs_hss_cx branch of docker_open5gs](#branch_open5gs)
+- [Use open5gs_hss_cx branch of docker_open5gs](#branch_open5gs)
+- [Use VoLTE/SMS with Raspberry Pi 4B](#rp4)
+  - [Change how to create the docker image and container of MongoDB](#rp4_mongodb)
 - [Changelog (summary)](#changelog)
 ---
 
@@ -71,7 +73,7 @@ The PDNs are as follows.
 | 192.168.100.0/24 | ogstun | internet | U-Plane1 |
 | 192.168.101.0/24 | ogstun2 | ims | U-Plane1 |
 
-<h2 id="branch_master">Use the master branch of docker_open5gs</h2>
+<h2 id="branch_master">Use master branch of docker_open5gs</h2>
 
 In this branch you can try **VoLTE** and **SMS over IMS** / **SMS over SGs**.   
 **Note.** For **SMS over SGs** of docker_open5gs, 2G/3G radio access is not used at all rather it uses only the core network (MSC + SMSC + HLR).
@@ -379,7 +381,7 @@ OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1001 send TEST MESSAGE
 OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1000 send TEST MESSAGE
 ```
 
-<h2 id="branch_open5gs">Use the open5gs_hss_cx branch of docker_open5gs</h2>
+<h2 id="branch_open5gs">Use open5gs_hss_cx branch of docker_open5gs</h2>
 
 In this branch you can try **VoLTE** and **SMS over IMS** / **SMS over SGs**.
 Kamailio's S-CSCF and I-CSCF can communicate with Open5GS HSS(Cx) instead of FHoSS.
@@ -389,11 +391,61 @@ Kamailio's S-CSCF and I-CSCF can communicate with Open5GS HSS(Cx) instead of FHo
 # git checkout open5gs_hss_cx
 ...
 ```
+
+<h2 id="rp4">Use VoLTE/SMS with Raspberry Pi 4B</h2>
+
+If you try VoLTE/SMS with Raspberry Pi 4B, it is convenient to use `open5gs_hss_cx` branch.
+On this case, as shown [here](https://github.com/s5uishida/install_mongodb_on_ubuntu_for_rp4b), there is a limit to the version of MongoDB that can be installed on the Raspberry Pi 4B.
+So make the necessary changes on docker_open5gs for this.
+
+<h3 id="rp4_mongodb">Change how to create the docker image and container of MongoDB</h3>
+
+First, clone this repository.
+```
+# git clone https://github.com/s5uishida/docker_open5gs_volte_sms_config
+```
+Copy the `mongo_for_rp4` directory from this repository as the `mongo` directory in the `open5gs_hss_cx` branch of docker_open5gs.
+```
+# cp -pr docker_open5gs_volte_sms_config/mongo_for_rp4 docker_open5gs/mongo
+```
+Then, for `docker-compose.yaml`, in addition to [this change](https://github.com/s5uishida/docker_open5gs_volte_sms_config#changes-in-configuration-files-of-docker_open5gs), change as follows.
+```
+--- docker-compose.yaml.orig    2023-08-05 08:37:04.796354539 +0000
++++ docker-compose.yaml 2023-08-05 12:14:37.128435471 +0000
+@@ -1,13 +1,14 @@
+ version: '3'
+ services:
+   mongo:
+-    image: mongo:6.0
++    build: ./mongo
++    image: docker_mongo
+     container_name: mongo
+-    command: --bind_ip 0.0.0.0
++    command: /bin/sh -c 'mongod --dbpath /data/db --logpath /data/log/mongodb.log --bind_ip 0.0.0.0'
+     env_file:
+       - .env
+     volumes:
+-      - mongodbdata:/data/db
++      - ./mongo/data:/data
+       - /etc/timezone:/etc/timezone:ro
+       - /etc/localtime:/etc/localtime:ro
+     expose:
+@@ -640,5 +634,4 @@
+       config:
+         - subnet: ${TEST_NETWORK}
+ volumes:
+-  mongodbdata: {}
+   dbdata: {}
+```
+After this, the build and configuration are the same as above.
+I haven't confirmed the operation, but it is probably able to use VoLTE/SMS with Raspberry Pi 4B.
+
 ---
 
 [docker_open5gs](https://github.com/herlesupreeth/docker_open5gs) is a excellent software to try **VoLTE** and **SMS** easily. I would like to thank all the software developers and contributors related.
 
 <h2 id="changelog">Changelog (summary)</h2>
 
+- [2023.08.05] Added the settings to use VoLTE/SMS with Raspberry Pi 4B. However, there is no confirmation of operation.
 - [2022.04.11] Open5GS HSS Cx interface now supports the settings related to SMSC application server.
 - [2022.02.27] Initial release.
