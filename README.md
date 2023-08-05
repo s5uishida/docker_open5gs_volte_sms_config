@@ -38,7 +38,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
   - [Try VoLTE and SMS](#try)
     - [Send SMS from OsmoMSC VTY terminal (SMS over SGs)](#osmomsc_send_command)
 - [Use open5gs_hss_cx branch of docker_open5gs](#branch_open5gs)
-- [Use VoLTE and SMS with Raspberry Pi 4B](#rp4)
+- [VoLTE and SMS with Raspberry Pi 4B](#rp4)
   - [Change how to create the docker image and container of MongoDB](#rp4_mongodb)
 - [Changelog (summary)](#changelog)
 ---
@@ -392,7 +392,7 @@ Kamailio's S-CSCF and I-CSCF can communicate with Open5GS HSS(Cx) instead of FHo
 ...
 ```
 
-<h2 id="rp4">Use VoLTE and SMS with Raspberry Pi 4B</h2>
+<h2 id="rp4">VoLTE and SMS with Raspberry Pi 4B</h2>
 
 If you try VoLTE and SMS with Raspberry Pi 4B, it is convenient to use `open5gs_hss_cx` branch.
 On this case, as shown [here](https://github.com/s5uishida/install_mongodb_on_ubuntu_for_rp4b), there is a limit to the version of MongoDB that can be installed on the Raspberry Pi 4B.
