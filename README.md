@@ -154,43 +154,6 @@ mme:
 ...
 ```
 
-**smf/smf.yaml)**
-
-Remove the binding on SBI and the connection settings to SCP.
-```diff
---- smf.yaml.orig       2023-08-07 10:58:15.565894554 +0000
-+++ smf.yaml    2023-08-07 11:02:08.002971555 +0000
-@@ -12,9 +12,6 @@
- 
- smf:
-     freeDiameter: /open5gs/install/etc/freeDiameter/smf.conf
--    sbi:
--      - addr: SMF_IP
--        port: 7777
-     gtpc:
-       - addr: SMF_IP
-     gtpu:
-@@ -46,18 +43,6 @@
-       - addr: SMF_IP
-         port: 9091
- 
--scp:
--    sbi:
--      - addr:
--          - SCP_IP
--        port: 7777
--
--nrf:
--    sbi:
--      - addr:
--          - NRF_IP
--        port: 7777
--
- upf:
-     pfcp:
-       - addr: UPF_IP
-```
-
 <h3 id="build">Build docker image for Open5GS and Kamailio</h3>
 
 Please install the following first.
