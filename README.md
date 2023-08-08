@@ -201,7 +201,7 @@ For example, I prepare terminals for each of the following NF groups and execute
 ```
 # set -a
 # source .env
-# docker compose -f 4g-volte-deploy.yaml up smsc icscf scscf pcscf
+# docker compose -f 4g-volte-deploy.yaml up icscf scscf pcscf smsc
 ```
 
 <h3 id="register_open5gs">Register subscribers information with Open5GS</h3>
