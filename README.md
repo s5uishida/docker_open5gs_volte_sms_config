@@ -367,7 +367,7 @@ I haven't confirmed the operation, but it is probably able to use VoLTE and SMS 
 
 <h2 id="trouble">Trouble Record</h2>
 
-As of 2023.08.09, VoLTE did not work with latest docker_open5gs in my environment.
+As of 2023.08.09, VoLTE did not work with `open5gs_hss_cx` branch of latest docker_open5gs in my environment.
 By reverting the following version, VoLTE was able to work fine.
 
 - docker_open5gs (`commit:bd2501bc11ee344588b1079f21b119f4d3656a7d`) on 2023.03.01
