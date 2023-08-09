@@ -38,6 +38,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
     - [Send SMS from OsmoMSC VTY terminal (SMS over SGs)](#osmomsc_send_command)
 - [VoLTE and SMS with Raspberry Pi 4B](#rp4)
   - [Change how to create the docker image and container of MongoDB](#rp4_mongodb)
+- [Trouble Record](#trouble)
 - [Changelog (summary)](#changelog)
 ---
 
@@ -364,8 +365,19 @@ I haven't confirmed the operation, but it is probably able to use VoLTE and SMS 
 
 [docker_open5gs](https://github.com/herlesupreeth/docker_open5gs) is a excellent software to try **VoLTE** and **SMS** easily. I would like to thank all the software developers and contributors related.
 
+<h2 id="trouble">Trouble Record</h2>
+
+As of 2023.08.09, VoLTE did not work with latest docker_open5gs in my environment.
+By reverting the following version, VoLTE was able to work fine.
+
+- docker_open5gs (`commit:bd2501bc11ee344588b1079f21b119f4d3656a7d`) on 2023.03.01
+- Open5GS v2.6.1 (`commit:30e420b7a88c2e4d4917b51300f45a1e1632d692`) on 2023.03.08
+
+It may only occur in my environment. In any case, I would like to resolve this issue.
+
 <h2 id="changelog">Changelog (summary)</h2>
 
+- [2023.08.09] Added VoLTE trouble record in my environment.
 - [2023.08.07] Changed the settings for only using `open5gs_hss_cx` branch.
 - [2023.08.05] Added the settings to use VoLTE and SMS with Raspberry Pi 4B. However, there is no confirmation of operation.
 - [2022.04.11] Open5GS HSS Cx interface now supports the settings related to SMSC application server.
