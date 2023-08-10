@@ -36,8 +36,8 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
   - [Register the IMSI and MSISDN with OsmoHLR](#register_osmocom)
   - [Try VoLTE and SMS](#try)
     - [Send SMS from OsmoMSC VTY terminal (SMS over SGs)](#osmomsc_send_command)
-- [VoLTE and SMS with Raspberry Pi 4B](#rp4)
-  - [Change how to create the docker image and container of MongoDB](#rp4_mongodb)
+- [VoLTE and SMS with Raspberry Pi 4B](#rp4b)
+  - [Change how to create the docker image and container of MongoDB](#rp4b_mongodb)
 - [Trouble Information](#trouble)
 - [Changelog (summary)](#changelog)
 ---
@@ -47,10 +47,10 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
 This describes the following setting example.
 ```
      eNodeB                Docker host - 172.22.0.0/24
-    ---------             -------------
+   +---------+           +-------------+
    |         |           |             |
    |         |           |             |
-    ---------             -------------
+   +---------+           +-------------+
         |                       |
 -------------------------------------------------------
        .10                     .20      192.168.0.0/24
@@ -312,13 +312,13 @@ OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1001 send TEST MESSAGE
 OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1000 send TEST MESSAGE
 ```
 
-<h2 id="rp4">VoLTE and SMS with Raspberry Pi 4B</h2>
+<h2 id="rp4b">VoLTE and SMS with Raspberry Pi 4B</h2>
 
 When you try VoLTE and SMS with Raspberry Pi 4B,
 as shown [here](https://github.com/s5uishida/install_mongodb_on_ubuntu_for_rp4b), there is a limit to the version of MongoDB that can be installed on the Raspberry Pi 4B.
 So make the necessary changes on docker_open5gs for this.
 
-<h3 id="rp4_mongodb">Change how to create the docker image and container of MongoDB</h3>
+<h3 id="rp4b_mongodb">Change how to create the docker image and container of MongoDB</h3>
 
 First, clone this repository.
 ```
