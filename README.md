@@ -378,7 +378,7 @@ It may only occur in my environment. In any case, I would like to resolve this i
 
 <h2 id="changelog">Changelog (summary)</h2>
 
-- [2023.08.09] Added the trouble information in my environment.
+- [2023.08.09] Added an issue in my environment.
 - [2023.08.07] Changed the settings for only using `open5gs_hss_cx` branch.
 - [2023.08.05] Added the settings to use VoLTE and SMS with Raspberry Pi 4B. However, there is no confirmation of operation.
 - [2022.04.11] Open5GS HSS Cx interface now supports the settings related to SMSC application server.
