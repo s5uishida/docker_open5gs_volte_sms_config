@@ -273,9 +273,6 @@ This setting is required to function as **SMS over SGs**.
 
 Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device does not support **SMS over IMS**, you can send SMS with **SMS over SGs** depending on your device.
 
-**Note. Kamailio's SMS (SMS over IMS) doesn't seem to handle multibyte messages properly, which causes garbled characters in SMS.
-On the other hand, OsmoMSC (SMS over SGs) seems to handle multibyte messages properly without garbled characters.**
-
 <h4 id="osmomsc_send_command">Send SMS from OsmoMSC VTY terminal (SMS over SGs)</h4>
 
 You can send SMS to the destination terminal by command operation on the OsmoMSC VTY terminal (SMS over SGs).
