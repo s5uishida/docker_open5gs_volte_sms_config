@@ -370,10 +370,6 @@ The system versions when I confirmed the operation of VoLTE and SMS in the `open
 docker_open5gs (commit:76206df07ea1571640b71fa25f28cb3ce4265aff) on 2023.08.22
 Open5GS v2.6.4 (commit:7f088730ed4bedc12f562e53de44697d5e1f5c6e) on 2023.08.20
 ```
-```
-docker_open5gs (commit:bd2501bc11ee344588b1079f21b119f4d3656a7d) on 2023.03.01
-Open5GS v2.6.1 (commit:30e420b7a88c2e4d4917b51300f45a1e1632d692) on 2023.03.08
-```
 
 <h2 id="changelog">Changelog (summary)</h2>
 
