@@ -39,7 +39,7 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
     - [Send SMS from OsmoMSC VTY terminal (SMS over SGs)](#osmomsc_send_command)
 - [VoLTE and SMS with Raspberry Pi 4B](#rp4b)
   - [Change how to create the docker image and container of MongoDB](#rp4b_mongodb)
-- [Issues](#issues)
+- [Confirmed Version List](#ver_list)
 - [Changelog (summary)](#changelog)
 ---
 
@@ -363,18 +363,21 @@ I haven't confirmed the operation, but it is probably able to use VoLTE and SMS 
 
 [docker_open5gs](https://github.com/herlesupreeth/docker_open5gs) is a excellent software to try **VoLTE** and **SMS** easily. I would like to thank all the software developers and contributors related.
 
-<h2 id="issues">Issues</h2>
+<h2 id="ver_list">Confirmed Version List</h2>
 
-As of 2023.08.09, VoLTE did not work with `open5gs_hss_cx` branch of latest docker_open5gs in my environment.
-By reverting the following version, VoLTE was able to work fine.
-
-- docker_open5gs (`commit:bd2501bc11ee344588b1079f21b119f4d3656a7d`) on 2023.03.01
-- Open5GS v2.6.1 (`commit:30e420b7a88c2e4d4917b51300f45a1e1632d692`) on 2023.03.08
-
-It may only occur in my environment. In any case, I would like to resolve this issue.
+The system versions when I confirmed the operation of VoLTE and SMS in the `open5gs_hss_cx` branch of my environment are as follows.
+```
+docker_open5gs (commit:76206df07ea1571640b71fa25f28cb3ce4265aff) on 2023.08.22
+Open5GS v2.6.4 (commit:7f088730ed4bedc12f562e53de44697d5e1f5c6e) on 2023.08.20
+```
+```
+docker_open5gs (commit:bd2501bc11ee344588b1079f21b119f4d3656a7d) on 2023.03.01
+Open5GS v2.6.1 (commit:30e420b7a88c2e4d4917b51300f45a1e1632d692) on 2023.03.08
+```
 
 <h2 id="changelog">Changelog (summary)</h2>
 
+- [2023.08.31] Deleted the issue section and added a list of confirmed versions.
 - [2023.08.09] Added an issue in my environment.
 - [2023.08.07] Changed the settings for only using `open5gs_hss_cx` branch.
 - [2023.08.05] Added the settings to use VoLTE and SMS with Raspberry Pi 4B. However, there is no confirmation of operation.
