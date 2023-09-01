@@ -37,6 +37,8 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
   - [Register the IMSI and MSISDN with OsmoHLR](#register_osmocom)
   - [Try VoLTE and SMS](#try)
     - [Send SMS from OsmoMSC VTY terminal (SMS over SGs)](#osmomsc_send_command)
+- [Use only SMS over IMS without using SMS over SGs](#use_only_ims)
+  - [Additional changes in configuration files of docker_open5gs](#add_change_config)
 - [VoLTE and SMS with Raspberry Pi 4B](#rp4b)
   - [Change how to create the docker image and container of MongoDB](#rp4b_mongodb)
 - [Confirmed Version List](#ver_list)
@@ -311,6 +313,102 @@ OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1001 send TEST MESSAGE
 OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1000 send TEST MESSAGE
 ```
 
+<h2 id="use_only_ims">Use only SMS over IMS without using SMS over SGs</h2>
+
+It is also possible to configure only **SMS over IMS** without using **SMS over SGs**.
+In this case, OsmoHLR and OsmoMSC are not required and the configuration is slightly simple.
+
+<h3 id="add_change_config">Additional changes in configuration files of docker_open5gs</h3>
+
+Additional changes from the previously written configuration are as follows.
+
+**4g-volte-deploy.yaml)**
+
+Publish the following ports of SGW-U and MME, and delete MME's dependency on OsmoMSC.
+
+```diff
+--- 4g-volte-deploy.yaml.orig   2023-09-01 23:07:44.380709992 +0900
++++ 4g-volte-deploy.yaml        2023-09-01 23:09:48.911421833 +0900
+@@ -100,8 +100,8 @@
+     expose:
+       - "8805/udp"
+       - "2152/udp"
+-    # ports:
+-    #   - "2152:2152/udp"
++    ports:
++      - "2152:2152/udp"
+     networks:
+       default:
+         ipv4_address: ${SGWU_IP}
+@@ -127,7 +127,6 @@
+       - "5868/sctp"
+       - "8805/udp"
+       - "2123/udp"
+-      - "7777/tcp"
+       - "9091/tcp"
+     networks:
+       default:
+@@ -166,7 +165,6 @@
+       - sgwu
+       - smf
+       - upf
+-      - osmomsc
+     container_name: mme
+     env_file:
+       - .env
+@@ -187,8 +185,8 @@
+       - "36412/sctp"
+       - "2123/udp"
+       - "9091/tcp"
+-    # ports:
+-    #   - "36412:36412/sctp"
++    ports:
++      - "36412:36412/sctp"
+     networks:
+       default:
+         ipv4_address: ${MME_IP}
+```
+
+**mme/mme.yaml)**
+
+Delete the SGsAP section.
+```diff
+--- mme.yaml.orig       2023-09-01 23:07:34.417698185 +0900
++++ mme.yaml    2023-09-01 23:10:34.248245114 +0900
+@@ -9,19 +9,6 @@
+       dev: MME_IF
+     gtpc:
+       dev: MME_IF
+-    sgsap:
+-      addr: OSMOMSC_IP
+-      map:
+-        tai:
+-          plmn_id:
+-            mcc: MCC
+-            mnc: MNC
+-          tac: 1
+-        lai:
+-          plmn_id:
+-            mcc: MCC
+-            mnc: MNC
+-          lac: 1
+     gummei: 
+       plmn_id:
+         mcc: MCC
+```
+And change the following tac according to the TAC of eNodeB.
+```
+mme:
+...
+    tai:
+      plmn_id:
+        mcc: MCC
+        mnc: MNC
+-->   tac: 1
+...
+```
+From here on, follow the same steps as before. Also, the OsmoHLR and OsmoMSC containers do not need to be started. And there is no need to register the IMSI and MSISDN with OsmoHLR.
+
 <h2 id="rp4b">VoLTE and SMS with Raspberry Pi 4B</h2>
 
 When you try VoLTE and SMS with Raspberry Pi 4B,
@@ -374,6 +472,7 @@ Open5GS v2.6.4 (commit:7f088730ed4bedc12f562e53de44697d5e1f5c6e) on 2023.08.20
 
 <h2 id="changelog">Changelog (summary)</h2>
 
+- [2023.09.01] Added the configuration to use only **SMS over IMS** without using **SMS over SGs**.
 - [2023.08.31] Deleted the issue section and added a list of confirmed versions. Kamailio's SMSC can now send and receive multi-byte characters without garbled characters.
 - [2023.08.09] Added an issue in my environment.
 - [2023.08.07] Changed the settings for only using `open5gs_hss_cx` branch.
