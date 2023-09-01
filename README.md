@@ -59,7 +59,7 @@ This describes the following setting example.
 For reference, the Docker host VM on VirtualBox I have tried is as follows:
 | CPU Cores | Memory | SSD | OS |
 | --- | --- | --- | --- |
-| 2 | 4GB | 40GB | Ubuntu 20.04 |
+| 2 | 4GB | 40GB | Ubuntu 22.04 |
 
 For eNodeB, set static routing to eNodeB for packets going from eNodeB to the Docker host network (`172.22.0.0/24`).
 ```
