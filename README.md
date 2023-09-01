@@ -407,7 +407,7 @@ mme:
 -->   tac: 1
 ...
 ```
-From here on, follow the same steps as before. Also, the OsmoHLR and OsmoMSC containers do not need to be started. And there is no need to register the IMSI and MSISDN with OsmoHLR.
+From here on, follow the same steps as before. Also, the `osmohlr` and `osmomsc` containers do not need to be started. And there is no need to register the IMSI and MSISDN with OsmoHLR.
 
 <h2 id="rp4b">VoLTE and SMS with Raspberry Pi 4B</h2>
 
