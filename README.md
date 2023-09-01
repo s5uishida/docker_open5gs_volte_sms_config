@@ -271,7 +271,8 @@ This setting is required to function as **SMS over SGs**.
 
 <h3 id="try">Try VoLTE and SMS</h3>
 
-Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device does not support **SMS over IMS**, you can send SMS with **SMS over SGs** depending on your device.
+Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device does not support **SMS over IMS**, you can send SMS with **SMS over SGs** depending on your device.  
+**Note. To try SMS over SGs, there is a way to cause CS Fallback by not running the smsc container.**
 
 <h4 id="osmomsc_send_command">Send SMS from OsmoMSC VTY terminal (SMS over SGs)</h4>
 
@@ -373,7 +374,7 @@ Open5GS v2.6.4 (commit:7f088730ed4bedc12f562e53de44697d5e1f5c6e) on 2023.08.20
 
 <h2 id="changelog">Changelog (summary)</h2>
 
-- [2023.08.31] Deleted the issue section and added a list of confirmed versions.
+- [2023.08.31] Deleted the issue section and added a list of confirmed versions. Kamailio's SMSC can now send and receive multi-byte characters without garbled characters.
 - [2023.08.09] Added an issue in my environment.
 - [2023.08.07] Changed the settings for only using `open5gs_hss_cx` branch.
 - [2023.08.05] Added the settings to use VoLTE and SMS with Raspberry Pi 4B. However, there is no confirmation of operation.
