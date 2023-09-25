@@ -3,7 +3,9 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
 
 ---
 
-<h2 id="conf_list">List of Sample Configurations</h2>
+<a id="conf_list"></a>
+
+## List of Sample Configurations
 
 1. [One SGW-C/PGW-C, one SGW-U/PGW-U and one APN](https://github.com/s5uishida/open5gs_epc_srsran_sample_config)
 2. [One SGW-C/PGW-C, Multiple SGW-Us/PGW-Us and APNs](https://github.com/s5uishida/open5gs_epc_oai_sample_config)
@@ -20,13 +22,17 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
 13. [VPP-UPF with DPDK](https://github.com/s5uishida/open5gs_5gc_ueransim_vpp_upf_dpdk_sample_config)
 ---
 
-<h2 id="misc">Miscellaneous Notes</h2>
+<a id="misc"></a>
+
+## Miscellaneous Notes
 
 - [Install MongoDB 6.0 and Open5GS WebUI](https://github.com/s5uishida/open5gs_install_mongodb6_webui)
 - [Install MongoDB 4.4.18 on Ubuntu 20.04 for Raspberry Pi 4B](https://github.com/s5uishida/install_mongodb_on_ubuntu_for_rp4b)
 - [A Note for Changing Network Interface of UPF from TUN to TAP in Open5GS](https://github.com/s5uishida/change_from_tun_to_tap_in_open5gs)
 ---
-<h2 id="toc">Table of Contents</h2>
+<a id="toc"></a>
+
+## Table of Contents
 
 - [Overview of Network Configuration](#overview)
 - [Use open5gs_hss_cx branch of docker_open5gs](#branch_open5gs)
@@ -45,7 +51,9 @@ This briefly describes the settings for using **VoLTE** and **SMS** of [docker_o
 - [Changelog (summary)](#changelog)
 ---
 
-<h2 id="overview">Overview of Network Configuration</h2>
+<a id="overview"></a>
+
+## Overview of Network Configuration
 
 This describes the following setting example.
 ```
@@ -75,7 +83,9 @@ The PDNs are as follows.
 | 192.168.100.0/24 | ogstun | internet | U-Plane1 |
 | 192.168.101.0/24 | ogstun2 | ims | U-Plane1 |
 
-<h2 id="branch_open5gs">Use open5gs_hss_cx branch of docker_open5gs</h2>
+<a id="branch_open5gs"></a>
+
+## Use open5gs_hss_cx branch of docker_open5gs
 
 For **VoLTE** and **SMS over IMS** / **SMS over SGs**, it is convenient to use `open5gs_hss_cx` branch.
 Kamailio's S-CSCF and I-CSCF communicate with Open5GS HSS(Cx).  
@@ -86,7 +96,9 @@ Kamailio's S-CSCF and I-CSCF communicate with Open5GS HSS(Cx).
 # git checkout open5gs_hss_cx
 ```
 
-<h3 id="change_config">Changes in configuration files of docker_open5gs</h3>
+<a id="change_config"></a>
+
+### Changes in configuration files of docker_open5gs
 
 **.env)**
 
@@ -158,7 +170,9 @@ mme:
 ...
 ```
 
-<h3 id="build">Build docker image for Open5GS and Kamailio</h3>
+<a id="build"></a>
+
+### Build docker image for Open5GS and Kamailio
 
 Please install the following first.
 - [docker-ce](https://docs.docker.com/install/linux/docker-ce/ubuntu)
@@ -173,7 +187,9 @@ See [docker_open5gs](https://github.com/herlesupreeth/docker_open5gs) for build 
 ...
 ```
 
-<h3 id="run">Run docker-compose</h3>
+<a id="run"></a>
+
+### Run docker-compose
 
 For example, I prepare terminals for each of the following NF groups and execute them in order while checking the startup.
 
@@ -208,7 +224,9 @@ For example, I prepare terminals for each of the following NF groups and execute
 # docker compose -f 4g-volte-deploy.yaml up icscf scscf pcscf smsc
 ```
 
-<h3 id="register_open5gs">Register subscribers information with Open5GS</h3>
+<a id="register_open5gs"></a>
+
+### Register subscribers information with Open5GS
 
 **Please also register MSISDN.** At that time, set the APN setting information as follows.
 | APN | Type | QCI | ARP | Capability | Vulnerablility | MBR DL/UL(Kbps) | GBR DL/UL(Kbps) |
@@ -229,7 +247,9 @@ user: admin
 password: 1423
 ```
 
-<h3 id="register_osmocom">Register the IMSI and MSISDN with OsmoHLR</h3>
+<a id="register_osmocom"></a>
+
+### Register the IMSI and MSISDN with OsmoHLR
 
 Please login to the `osmohlr` container and register by referring to the following.
 
@@ -271,12 +291,16 @@ OsmoHLR#
 ```
 This setting is required to function as **SMS over SGs**.
 
-<h3 id="try">Try VoLTE and SMS</h3>
+<a id="try"></a>
+
+### Try VoLTE and SMS
 
 Make sure that you can make a VoLTE call and SMS to the MSISDN. If your device does not support **SMS over IMS**, you can send SMS with **SMS over SGs** depending on your device.  
 **Note. To try SMS over SGs, there is a way to cause CS Fallback by not running the smsc container.**
 
-<h4 id="osmomsc_send_command">Send SMS from OsmoMSC VTY terminal (SMS over SGs)</h4>
+<a id="osmomsc_send_command"></a>
+
+### Send SMS from OsmoMSC VTY terminal (SMS over SGs)
 
 You can send SMS to the destination terminal by command operation on the OsmoMSC VTY terminal (SMS over SGs).
 Please login to the `osmomsc` container and send SMS from the command line as following.
@@ -313,12 +337,16 @@ OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1001 send TEST MESSAGE
 OsmoMSC# subscriber msisdn 1002 sms sender msisdn 1000 send TEST MESSAGE
 ```
 
-<h2 id="use_only_ims">Use only SMS over IMS without using SMS over SGs</h2>
+<a id="use_only_ims"></a>
+
+## Use only SMS over IMS without using SMS over SGs
 
 It is also possible to configure only **SMS over IMS** without using **SMS over SGs**.
 In this case, OsmoHLR and OsmoMSC are not required and the configuration is slightly simple.
 
-<h3 id="add_change_config">Additional changes in configuration files of docker_open5gs</h3>
+<a id="add_change_config"></a>
+
+### Additional changes in configuration files of docker_open5gs
 
 Additional changes from the previously written configuration are as follows.
 
@@ -409,13 +437,17 @@ mme:
 ```
 From here on, follow the same steps as before. Also, the `osmohlr` and `osmomsc` containers do not need to be started. And there is no need to register the IMSI and MSISDN with OsmoHLR.
 
-<h2 id="rp4b">VoLTE and SMS with Raspberry Pi 4B</h2>
+<a id="rp4b"></a>
+
+## VoLTE and SMS with Raspberry Pi 4B
 
 When you try VoLTE and SMS with Raspberry Pi 4B,
 as shown [here](https://github.com/s5uishida/install_mongodb_on_ubuntu_for_rp4b), there is a limit to the version of MongoDB that can be installed on the Raspberry Pi 4B.
 So make the necessary changes on docker_open5gs for this.
 
-<h3 id="rp4b_mongodb">Change how to create the docker image and container of MongoDB</h3>
+<a id="rp4b_mongodb"></a>
+
+### Change how to create the docker image and container of MongoDB
 
 First, clone this repository.
 ```
@@ -462,7 +494,9 @@ I haven't confirmed the operation, but it is probably able to use VoLTE and SMS 
 
 [docker_open5gs](https://github.com/herlesupreeth/docker_open5gs) is a excellent software to try **VoLTE** and **SMS** easily. I would like to thank all the software developers and contributors related.
 
-<h2 id="ver_list">Confirmed Version List</h2>
+<a id="ver_list"></a>
+
+## Confirmed Version List
 
 The system versions when I confirmed the operation of VoLTE and SMS in the `open5gs_hss_cx` branch of my environment are as follows.
 ```
@@ -470,7 +504,9 @@ docker_open5gs (commit:76206df07ea1571640b71fa25f28cb3ce4265aff) on 2023.08.22
 Open5GS v2.6.4 (commit:7f088730ed4bedc12f562e53de44697d5e1f5c6e) on 2023.08.20
 ```
 
-<h2 id="changelog">Changelog (summary)</h2>
+<a id="changelog"></a>
+
+## Changelog (summary)
 
 - [2023.09.01] Added the configuration to use only **SMS over IMS** without using **SMS over SGs**.
 - [2023.08.31] Deleted the issue section and added a list of confirmed versions. Kamailio's SMSC can now send and receive multi-byte characters without garbled characters.
