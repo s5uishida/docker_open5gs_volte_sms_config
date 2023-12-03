@@ -475,10 +475,10 @@ I haven't confirmed the operation, but it is probably able to use VoLTE and SMS 
 ## Confirmed Version List
 
 The system versions when I confirmed the operation of VoLTE and SMS in the `open5gs_hss_cx` branch of my environment are as follows.
-```
-docker_open5gs (commit:76206df07ea1571640b71fa25f28cb3ce4265aff) on 2023.08.22
-Open5GS v2.6.4 (commit:7f088730ed4bedc12f562e53de44697d5e1f5c6e) on 2023.08.20
-```
+
+| docker_open5gs | Open5GS |
+| -- | -- |
+| `commit:76206df07ea1571640b71fa25f28cb3ce4265aff`<br>on 2023.08.22 | v2.6.4+<br>`commit:7f088730ed4bedc12f562e53de44697d5e1f5c6e`<br>on 2023.08.20 | 
 
 <a id="changelog"></a>
 
